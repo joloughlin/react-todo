@@ -9,6 +9,7 @@ understand the presentation (stateless) vs smart component pattern
 **Learning Objectives**: 
 1. understand functional (stateless) and stateful components
 2. understand a React pattern for separating presentational and "smart" components
+3. understand React hooks fundamentals
 3. learn some ES6 syntax
 
 ### Setup
