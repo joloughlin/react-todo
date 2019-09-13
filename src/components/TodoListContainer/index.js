@@ -1,30 +1,38 @@
-import React, { Component } from 'react';
-import TodoList from '../TodoList';
-import TodoInput from '../TodoInput';
+import React, { useState } from 'react';
 
-class TodoContainer extends Component {
-  state = {
-    items: ['first todo item'],
-    term: ''
-  }
+export const TodoInput = ({ input, setInput, setItems, items }) => (
+  <div>
+    <input className='itemInput' value={input} onChange={(event) => setInput(event.target.value)} />
+    <button onClick={() => {
+      setItems([...items, input])
+      setInput('')
+    }}>Add</button>
+  </div>
+)
 
-  updateInput = (event) => {
-    this.setState({term: event.target.value});
-  }
+export const TodoItem = ({ item }) => (
+  <li>
+    <input type="checkbox" />
+    {item}
+  </li>
+)
 
-  addItem = () => {
-    this.state.term !== '' && this.setState({
-      items: [...this.state.items, this.state.term],
-      term: ''
-    })
-  }
+export const TodoList = ({ todoItems }) => (
+  <ul>
+    {todoItems && todoItems.map((item, index) =>
+      <TodoItem key={index} item={item} />
+    )}
+  </ul>
+)
 
-  render = () => (
+export const TodoContainer = () => {
+  const [items, setItems] = useState(['first todo item'])
+  const [input, setInput] = useState('')
+
+  return (
     <div className="todoContainer">
-      <TodoInput item={this.state.term} addItem={this.addItem} updateInput={this.updateInput} />
-      <TodoList todoItems={this.state.items} />
+      <TodoInput input={input} setInput={setInput} setItems={setItems} items={items} />
+      <TodoList todoItems={items} />
     </div>
   )
 }
-
-export default TodoContainer;
