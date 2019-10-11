@@ -35,7 +35,7 @@ describe('TodoList', () => {
     wrapper = shallow(<TodoList {...props} />);
   })
 
-  it.skip('returns a list of TodoItem', () => {
+  it('returns a list of TodoItem', () => {
     expect(wrapper).toContainReact(<TodoItem item={'todo item'} />)
     expect(wrapper).toContainReact(<TodoItem item={'todo item 2'} />)
     expect(wrapper.find(TodoItem).length).toBe(2)
@@ -55,17 +55,17 @@ describe('TodoInput', () => {
     wrapper = shallow(<TodoInput {...props} />)
   })
 
-  it.skip("should render the 'learn hooks!' as the input value", () => {
+  it("should render 'learn hooks!' as the input value", () => {
     expect(wrapper.find('input').get(0).props.value).toBe('learn hooks!')
   })
 
-  it.skip("invokes setInput when the user changes the input", () => {
+  it("invokes setInput when the user changes the input", () => {
     const inputElement = wrapper.find('input')
     inputElement.simulate('change', {target: 'learn apollo hooks!'})
     expect(props.setInput).toHaveBeenCalled()
   })
 
-  it.skip('invokes setItems and setInput when a user adds an item', () => {
+  it('invokes setItems and setInput when a user adds an item', () => {
     const buttonElement = wrapper.find('button')
     buttonElement.simulate('click')
     expect(props.setItems).toHaveBeenCalled()
@@ -80,11 +80,11 @@ describe('TodoContainer', ()=> {
     wrapper = mount(<TodoContainer/>)
   })
 
-  it.skip('renders TodoInput', () => {
+  it('renders TodoInput', () => {
     expect(wrapper.find(TodoInput).length).toBe(1)
   })
 
-  it.skip('renders TodoList', () => {
+  it('renders TodoList', () => {
     expect(wrapper.find(TodoList).length).toBe(1)
   })
 })
